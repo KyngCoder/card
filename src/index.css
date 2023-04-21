@@ -1,0 +1,14 @@
+:root{
+background:rgb(154, 150, 150)
+}
+
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
