@@ -29,7 +29,7 @@ const Card = ({ info }) => {
         <h2 className="text-2xl font-semibold">{info.name}</h2>
       </div>
       <div className="mt-4 px-8">
-        <div className="w-full  h-0.5 bg-gray-500 flex items-center justify-between ">
+        <div className="w-full  h-0.5   flex items-center justify-between ">
           <div className="flex items-center">
             <img src={info.gender === "male" ? male : female} />
             <p>{info.birth_year}</p>

@@ -5,6 +5,7 @@ import Controls from "./components/Controls"
 import MenuItems from "./components/MenuItems"
 import CardDetails from "./pages/CardDetails"
 import HomePage from "./pages/HomePage"
+import Decks from "./pages/Decks"
 
 
 
@@ -22,6 +23,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/details" element={<CardDetails />} />
+      <Route path="/decks" element={<Decks />} />
     </Routes>
     </BrowserRouter>
     </div>
