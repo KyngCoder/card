@@ -6,12 +6,19 @@ import male from "../assets/icons/male.svg";
 import female from "../assets/icons/female.svg";
 import planet from "../assets/icons/planet.svg";
 import vehicle from "../assets/icons/vehicle.svg";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ info }) => {
-  
+
+  const navigate = useNavigate()
+
+  const navigateToDetails = (name) => {
+ 
+    navigate('/details',{state:{"name":name}})
+  }
 
   return (
-    <section className="  bg-gray-100  rounded-lg ">
+    <section onClick={() => navigateToDetails(info.name)} className="  bg-gray-100 transition rounded-lg pb-4 duration-700 cursor-pointer active:scale-90">
       <div className="flex-cols  w-full px-4 py-2  bg-gray-400 w-full">
         <div className="flex justify-between items-center py-2  ">
           <img src={card} />

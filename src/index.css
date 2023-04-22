@@ -8,6 +8,10 @@ background:rgb(154, 150, 150)
   fill: currentColor;
 }
 
+.hover-card{
+  
+}
+
 
 @tailwind base;
 @tailwind components;

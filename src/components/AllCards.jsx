@@ -76,7 +76,7 @@ const AllCards = () => {
     {clicked === true ? (
       <Search />
     ) : (
-      <div className="grid md:grid-cols-2 lg:grid-cols-5 grid-cols-1 gap-4 px-8 mt-4 pl-16 mb-8">
+      <div className="grid  md:grid-cols-2 lg:grid-cols-5 grid-cols-1 gap-4 px-8 mt-4 pl-16 mb-8 ">
         {info.map((item, index) => (
           <Card key={item.name + index} info={item} />
         ))}

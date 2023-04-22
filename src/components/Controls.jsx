@@ -26,6 +26,7 @@ const Controls = () => {
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
+    console.log(e.target.value)
     getSearchTerm(searchTerm)
     clearTimeout(timerRef.current); // clear the timeout on every change
   };
@@ -42,15 +43,15 @@ const Controls = () => {
         </button>
       </div>
 
-      <div onClick={() => filterCards("alphabet")} className={`bg-white border-gray-600 border-2 rounded-sm text-lg px-4 py-1 ${state.filter === 'alphabet' ? 'bg-gray-300' : ''}`}>
+      <div onClick={() => filterCards("alphabet")} className={`bg-white border-gray-600 border-2 active-scale-90 cursor-pointer rounded-sm text-lg px-4 py-1 ${state.filter === 'alphabet' ? 'bg-gray-300' : ''}`}>
         <p>A to Z</p>
       </div>
 
-      <div onClick={() => filterCards("youngest")} className={`bg-white border-gray-600 border-2 rounded-sm text-lg px-4 py-1 ${state.filter === 'youngest' ? 'bg-gray-300' : ''}`}>
+      <div onClick={() => filterCards("youngest")} className={`bg-white border-gray-600 border-2 active-scale-90 cursor-pointer rounded-sm text-lg px-4 py-1 ${state.filter === 'youngest' ? 'bg-gray-300' : ''}`}>
         <p>Youngest</p>
       </div>
 
-      <div onClick={() => filterCards("eldest")} className={`bg-white border-gray-600 border-2 rounded-sm text-lg px-4 py-1 ${state.filter === 'eldest' ? 'bg-gray-300' : ''}`}>
+      <div onClick={() => filterCards("eldest")} className={`bg-white border-gray-600 active-scale-90 cursor-pointer border-2 rounded-sm text-lg px-4 py-1 ${state.filter === 'eldest' ? 'bg-gray-300' : ''}`}>
         <p>Eldest</p>
       </div>
 

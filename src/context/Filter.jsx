@@ -19,8 +19,8 @@ export const FilterProvider = ({ children }) => {
     setClicked(true)
   }
 
-  const getSearchTerm = () => {
-    setSearchTerm(" ")
+  const getSearchTerm = (term) => {
+    setSearchTerm(term)
   }
 
 
