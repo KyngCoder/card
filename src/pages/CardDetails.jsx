@@ -8,6 +8,7 @@ import male from "../assets/icons/male.svg";
 import female from "../assets/icons/female.svg";
 import planetIcon from "../assets/icons/planet.svg";
 import vehicleIcon from "../assets/icons/vehicle.svg";
+import Breadscrum from "../components/Breadscrum";
 
 const CardDetails = () => {
   const location = useLocation();
@@ -137,72 +138,76 @@ const CardDetails = () => {
     getPlanet();
   }, [speciesUrl]);
 
- 
   console.log(individual);
+  
 
   return (
-    <section className="px-16 my-4 max-w-[830px]">
-      <div className="bg-gray-100 transition rounded-lg pb-4 duration-700 cursor-pointer active:scale-90">
-        <div className="flex-cols  w-full px-4 py-2  bg-gray-400 w-full">
-          <div className="flex justify-between items-center py-2  ">
-            <img src={card} />
-            <div className="p-2 bg-white rounded-sm ">
-              <img src={add} className="w-5" />
-            </div>
-          </div>
-          <h2 className="text-2xl font-semibold">{individual.name}</h2>
-        </div>
-        <div className="mt-4 px-8">
-          <div className="w-full  h-0.5  my-2 flex items-center justify-between ">
-            <div className="flex items-center space-x-2">
-              <img src={individual.gender === "male" ? male : female} />
-              <p>{individual.birth_year}</p>
-            </div>
-            <p>{species || "unKnown"}</p>
-          </div>
-
-          <hr className="mb-4 mt-4 border-1 border-gray-400" />
-
-          <div className="flex justify-between items-center mt-2 mb-4 p-2 bg-gray-300 rounded-md ">
-            <div className="flex space-x-2">
-              <img src={planetIcon} className="w-6 h-6" />
-              <div>HOMEWORLD </div>
-            </div>
-            <div>{planet}</div>
-          </div>
-
-          {vehicles.map((vehicle, index) => {
-            return (
-              <div
-                key={index}
-                className="flex justify-between items-center mt-2 mb-4 p-2 bg-gray-300 rounded-md "
-              >
-                <div className="flex space-x-2">
-                  <img src={vehicleIcon} className="w-6 h-6" />
-                  <div>VEHICLES </div>
-                </div>
-                <div>{vehicle}</div>
+    <>
+      {" "}
+      <Breadscrum state1="All Cards" state2={`${individual.name} Details `} />
+      <section className="px-16 my-4 max-w-[830px]">
+        <div className="bg-gray-100 transition rounded-lg pb-4 duration-700 cursor-pointer active:scale-90">
+          <div className="flex-cols  w-full px-4 py-2  bg-gray-400 w-full">
+            <div className="flex justify-between items-center py-2  ">
+              <img src={card} />
+              <div className="p-2 bg-white rounded-sm ">
+                <img src={add} className="w-5" />
               </div>
-            );
-          })}
-
-          {spaceShips.map((starShip, index) => {
-            return (
-              <div
-                key={index}
-                className="flex justify-between items-center mt-2 mb-4 p-2 bg-gray-300 rounded-md "
-              >
-                <div className="flex space-x-2">
-                  <img src={starshipIcon} className="w-6 h-6" />
-                  <div>Starship </div>
-                </div>
-                <div>{starShip}</div>
+            </div>
+            <h2 className="text-2xl font-semibold">{individual.name}</h2>
+          </div>
+          <div className="mt-4 px-8">
+            <div className="w-full  h-0.5  my-2 flex items-center justify-between ">
+              <div className="flex items-center space-x-2">
+                <img src={individual.gender === "male" ? male : female} />
+                <p>{individual.birth_year}</p>
               </div>
-            );
-          })}
+              <p>{species || "unKnown"}</p>
+            </div>
+
+            <hr className="mb-4 mt-4 border-1 border-gray-400" />
+
+            <div className="flex justify-between items-center mt-2 mb-4 p-2 bg-gray-300 rounded-md ">
+              <div className="flex space-x-2">
+                <img src={planetIcon} className="w-6 h-6" />
+                <div>HOMEWORLD </div>
+              </div>
+              <div>{planet}</div>
+            </div>
+
+            {vehicles.map((vehicle, index) => {
+              return (
+                <div
+                  key={index}
+                  className="flex justify-between items-center mt-2 mb-4 p-2 bg-gray-300 rounded-md "
+                >
+                  <div className="flex space-x-2">
+                    <img src={vehicleIcon} className="w-6 h-6" />
+                    <div>VEHICLES </div>
+                  </div>
+                  <div>{vehicle}</div>
+                </div>
+              );
+            })}
+
+            {spaceShips.map((starShip, index) => {
+              return (
+                <div
+                  key={index}
+                  className="flex justify-between items-center mt-2 mb-4 p-2 bg-gray-300 rounded-md "
+                >
+                  <div className="flex space-x-2">
+                    <img src={starshipIcon} className="w-6 h-6" />
+                    <div>Starship </div>
+                  </div>
+                  <div>{starShip}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
