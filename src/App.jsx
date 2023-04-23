@@ -18,8 +18,6 @@ function App() {
   
     <BrowserRouter>
     <MenuItems />
-    <Breadscrum />
-    <Controls />
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/details" element={<CardDetails />} />

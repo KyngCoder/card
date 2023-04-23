@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import add from "../assets/icons/add.svg";
-import factionWater from "../assets/icons/factionWater.svg";
 import factionJedi from "../assets/icons/factionJedi.svg";
 import rebelWater from "../assets/icons/rebelAllianceWatermark.svg";
 import noFactionWater from "../assets/icons/noFactionWater.svg";
@@ -15,6 +14,28 @@ const Decks = () => {
 
   const [allCards, setAllCards] = useState([])
 
+  const getImageClassName = (imageName) => {
+    switch (imageName) {
+      case '/src/assets/icons/watermark.svg':
+        return 'bg-gray-900';
+      case '/src/assets/icons/rebelAllianceWatermark.svg':
+        return 'bg-red-600';
+      case '/src/assets/icons/noFactionWater.svg':
+        return 'bg-red-200';
+      case '/src/assets/icons/factionJedi.svg':
+        return 'bg-green-600';
+      default:
+        
+    }
+  };
+
+  const deleteCard = (index) => {
+    const updatedCards = [...allCards];
+    updatedCards.splice(index, 1);
+    setAllCards(updatedCards);
+    localStorage.setItem('cards', JSON.stringify(updatedCards));
+  }
+
   
   useEffect(() => {
     // Fetch data from local storage
@@ -28,6 +49,8 @@ const Decks = () => {
   const createCard = (e) => {
     e.preventDefault();
     console.log(icon, cardName);
+
+    if(!icon || !cardName) return
 
     const newCard = {
         icon: icon,
@@ -59,7 +82,7 @@ const Decks = () => {
   console.log(allCards)
 
   return (
-    <section className="px-16 my-2">
+    <section className="px-16 my-2 mb-4 h-full">
       <div className="flex px-16 my-4 justify-between">
         <p>
           No Decks Created. Please create a Deck by pressing the Add Deck +
@@ -155,20 +178,23 @@ const Decks = () => {
           </div>
         </div>
       </div>
-<div className="grid grid-cols-5 gap-x-2 space-x-2">
+<div className="grid grid-cols-1 md:grid-cols-2 h-screen xl:grid-cols-5 lg:grid-cols-4 gap-2 space-x-2 space-y-12 md:space-y-0 ">
      {
         allCards.map((card, index) => {
+            console.log(card.icon)
+            const imageClassName = getImageClassName(card.icon);
+
             return(
-                <div className="">
-                <div className="bg-gray-800 relative rounded-b-0 rounded-t-md h-32 ">
+                <div className="h-28 cursor-pointer active:scale-95 transition duration-500">
+                <div className={`${imageClassName}  relative rounded-b-0 rounded-t-md h-32  `}>
                   <div className="flex justify-end overflow-hidden">
-                    <img src={water} className="-mt-4 w-40 -mr-3 " />
+                    <img src={card.icon} className="-mt-4 w-40 -mr-3 " />
                   </div>
                   <div className="absolute top-4 left-4">
                     <img className="w-6 " src={deck} />
                   </div>
         
-                  <div className="absolute top-6 right-6 bg-gray-900 p-2">
+                  <div onClick={()=>deleteCard(index)} className="absolute top-6 right-6 bg-gray-900 p-2">
                     <img className="w-4 " src={remove} />
                   </div>
                   <h2 className="absolute bottom-4 left-4 text-3xl text-white font-semibold">
