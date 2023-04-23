@@ -10,6 +10,9 @@ import Breadscrum from "../components/Breadscrum";
 import { FilterContext } from '../context/Filter';
 import { useNavigate } from "react-router-dom";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Decks = () => {
   const [showModal, setShowModal] = useState(false);
   const [icon, setIcon] = useState(" ");
@@ -38,6 +41,7 @@ const Decks = () => {
     updatedCards.splice(index, 1);
     setAllCards(updatedCards);
     localStorage.setItem("cards", JSON.stringify(updatedCards));
+    toast("card was succesfully deleted")
   };
 
   useEffect(() => {
@@ -120,7 +124,7 @@ const Decks = () => {
     <div className="relative w-[450px] md:w-[820px] xl:w-[500px] text-gray-600 ">
         <input onFocus={handleFocus} onBlur = {handleBlur} value={searchTerm} onChange= {handleChange} type="search" name="serchTerm" placeholder="Search" className="bg-white w-full h-10 px-1 md:px-5 pr-10 rounded-md text-sm focus:outline-none" />
         <button type="submit" className="absolute svg-icon right-0 top-0 mt-3 mr-4">
-          <svg className="h-4 w-4 fillCurrent" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" >
+          <svg className="h-4 w-4 fillCurrent" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" >
             <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
           </svg>
         </button>
@@ -137,35 +141,34 @@ const Decks = () => {
             </div>
 
             <div
-              id="authentication-modal"
-              tabindex="-1"
+            
+              tabIndex="-1"
               aria-hidden="true"
               className={`${
                 showModal ? "flex" : "hidden"
-              } fixed top-30 -0 right-10 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full`}
+              } absolute -right-8 mt-2 z-20 w-96`}
             >
-              <div class="relative w-full max-w-md max-h-full">
-                <div class="relative bg-white rounded-lg shadow ">
+              <div className="relative w-full max-w-md max-h-full">
+                <div className="relative bg-white rounded-lg shadow ">
                   <button
                     onClick={closeModal}
                     type="button"
-                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                    data-modal-hide="authentication-modal"
+                    className="absolute top-0 right-0 bg-transparent hover:bg-black  rounded-lg  p-1   "
                   >
                     <svg
                       aria-hidden="true"
-                      class="w-5 h-5"
-                      fill="currentColor"
+                      className="w-5 h-5"
+                      fill="red"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clip-rule="evenodd"
+                        clipRule="evenodd"
                       ></path>
                     </svg>
-                    <span class="sr-only">Close modal</span>
+                
                   </button>
                   <div class="px-6 flex  justify-between py-6 lg:px-8 flex">
                     <div className="">
@@ -245,7 +248,7 @@ const Decks = () => {
             const imageClassName = getImageClassName(card.icon);
 
             return (
-              <div onClick={()=>viewDeck(card.cardName)} className="h-28 cursor-pointer active:scale-95 transition duration-500">
+              <div key={index} onClick={()=>viewDeck(card.cardName)} className="h-28 cursor-pointer active:scale-95 transition duration-500">
                 <div
                   className={`${imageClassName}  relative rounded-b-0 rounded-t-md h-32  `}
                 >
@@ -276,6 +279,7 @@ const Decks = () => {
           })}
         </div>
       </section>
+      <ToastContainer />
     </>
   );
 };

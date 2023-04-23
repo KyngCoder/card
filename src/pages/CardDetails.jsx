@@ -162,7 +162,7 @@ const CardDetails = () => {
                 <img src={individual.gender === "male" ? male : female} />
                 <p>{individual.birth_year}</p>
               </div>
-              <p>{species || "unKnown"}</p>
+              <p>{species.length > 0? species : "unKnown"}</p>
             </div>
 
             <hr className="mb-4 mt-4 border-1 border-gray-400" />

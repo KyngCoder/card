@@ -29,14 +29,16 @@ const Card = ({ info }) => {
         <h2 className="text-2xl font-semibold">{info.name}</h2>
       </div>
       <div className="mt-4 px-8">
-        <div className="w-full  h-0.5   flex items-center justify-between ">
+        <div className="w-full     flex items-center justify-between ">
           <div className="flex items-center">
             <img src={info.gender === "male" ? male : female} />
-            <p>{info.birth_year}</p>
+            <p>{info.birth_year || "unknown"}</p>
           </div>
 
           <p>Species</p>
         </div>
+
+        <hr className="mt-2 mb-4 border-gray-500" />
 
         <div className="flex justify-between items-center mt-2 mb-4 p-2 bg-gray-300 rounded-md">
           <div className="flex space-x-2">

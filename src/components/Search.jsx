@@ -1,11 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FilterContext } from "../context/Filter";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const [results, setResults] = useState([]);
   const { searchTerm } = useContext(FilterContext);
 
-  console.log(searchTerm);
+  const navigate = useNavigate()
+
+  const navigateToDetails = (name) => {
+ 
+    navigate('/details',{state:{"name":name}})
+  }
 
   const getSearchResult = async () => {
     try {
@@ -31,7 +37,7 @@ const Search = () => {
     <div className="px-16 max-w-md">
       {results.map((item, index) => {
         return (
-          <div className="bg-white px-4 py-2 text-lg font-semibold my-2 rounded-md shadow-md cursor-pointer" >
+          <div onClick={()=>navigateToDetails(item.name)} className="bg-white px-4 py-2 text-lg font-semibold my-2 rounded-md shadow-md cursor-pointer" >
             <p>{item.name}</p>
           </div>
         );

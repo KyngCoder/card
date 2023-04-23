@@ -15,8 +15,8 @@ export const FilterProvider = ({ children }) => {
   };
 
   //function to check if input is clicked
-  const updateClicked = () => {
-    setClicked(true)
+  const updateClicked = (status) => {
+    setClicked(status)
   }
 
   const getSearchTerm = (term) => {

@@ -9,7 +9,7 @@ const AllCards = () => {
   const [info, setInfo] = useState([]);
   const { filter, clicked } = useContext(FilterContext);
 
-
+console.log("card", clicked)
 
   // alphabet
   function sortObjectsByName(objects) {
