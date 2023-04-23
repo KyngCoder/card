@@ -1,12 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import AllCards from "./components/AllCards"
-import Breadscrum from "./components/Breadscrum"
-import Controls from "./components/Controls"
 import MenuItems from "./components/MenuItems"
 import CardDetails from "./pages/CardDetails"
 import HomePage from "./pages/HomePage"
-import Decks from "./pages/Decks"
 import DeckOfCard from "./pages/DeckOfCard"
+import AllDeck from "./pages/AllDeck"
 
 
 
@@ -22,7 +19,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/details" element={<CardDetails />} />
-      <Route path="/decks" element={<Decks />} />
+      <Route path="/decks" element={<AllDeck />} />
       <Route path="/deck/details" element={<DeckOfCard />} />
     </Routes>
     </BrowserRouter>
