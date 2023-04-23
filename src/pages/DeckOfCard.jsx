@@ -17,7 +17,8 @@ const DeckOfCard = () => {
         <Controls />
 
         <div className='px-16 mt-4'>
-            All Cards
+        {/* <DeckOfCard /> */}
+        {/* commented code above crashes */}
         </div>
     </section>
   )

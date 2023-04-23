@@ -26,8 +26,6 @@ const AllDeck = () => {
   
 
   const deleteCard =  (index) => {
-
-    console.log(isDelete)
     const updatedCards = [...allCards];
     updatedCards.splice(index, 1);
     setAllCards(updatedCards);
@@ -159,7 +157,7 @@ const AllDeck = () => {
             const imageClassName = getImageClassName(card.icon);
 
             return (
-             <Decks  deleteCard={deleteCard} card={card} index={index} imageClassName={imageClassName} />
+             <Decks key={index}  deleteCard={deleteCard} card={card} index={index} imageClassName={imageClassName} />
             );
           })}
         </div>
